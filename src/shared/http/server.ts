@@ -1,8 +1,11 @@
+import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
+
+import '@shared/typeorm';
 
 const app = express();
 
@@ -24,7 +27,8 @@ app.use(
                 message: error.message,
             });
         }
-        return response.statusCode(500).json({
+        response.statusCode = 500;
+        return response.json({
             status: 'error',
             message: 'Internal server error',
         });
