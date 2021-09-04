@@ -9,7 +9,11 @@ interface IRequest {
     quantity: number;
 }
 class CreateProductService {
-    public async execute({ name, price, quantity }: IRequest): Promise<Product> {
+    public async execute({
+        name,
+        price,
+        quantity,
+    }: IRequest): Promise<Product> {
         const productsRepository = getCustomRepository(ProductRepository);
         const productExists = await productsRepository.findByName(name);
         if (productExists) {

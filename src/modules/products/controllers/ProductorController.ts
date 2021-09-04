@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Request, response, Response } from 'express';
 import CreateProductService from '../services/CreateProductService';
 import DeleteProductService from '../services/DeleteProductService';
@@ -22,23 +21,37 @@ export default class ProductsController {
         const product = await showProduct.execute({ id });
         return response.json(product);
     }
-    public async create(request: Request, resposnse: Response): Promise<Response>{
+    public async create(
+        request: Request,
+        response: Response,
+    ): Promise<Response> {
         const { name, price, quantity } = request.body;
         const createProduct = new CreateProductService();
 
         const product = await createProduct.execute({ name, price, quantity });
         return response.json(product);
     }
-    public async update(request: Request, resposnse: Response): Promise<Response>{
+    public async update(
+        request: Request,
+        response: Response,
+    ): Promise<Response> {
         const { name, price, quantity } = request.body;
         const { id } = request.params;
 
         const updateProduct = new UpdateProductService();
-        const product = await updateProduct.execute({ id, name, price, quantity });
+        const product = await updateProduct.execute({
+            id,
+            name,
+            price,
+            quantity,
+        });
 
         return response.json(product);
     }
-      public async destroy(request: Request, response: Response): Promise<Response> {
+    public async destroy(
+        request: Request,
+        response: Response,
+    ): Promise<Response> {
         const { id } = request.params;
         const deleteProduct = new DeleteProductService();
         await deleteProduct.execute({ id });
