@@ -3,7 +3,7 @@ import UserToken from '../entities/UserToken';
 
 @EntityRepository(UserToken)
 export default class UsersTokensRepository extends Repository<UserToken> {
-    public async generate(user_id: string): Promise<UserToken | undefined> {
+    public async generate(user_id: string): Promise<UserToken> {
         const userToken = await this.create({
             user_id,
         });
