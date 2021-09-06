@@ -10,7 +10,7 @@ export default class UsersTokensRepository extends Repository<UserToken> {
         await this.save(userToken);
         return userToken;
     }
-    public async findByName(token: string): Promise<UserToken | undefined> {
+    public async findByToken(token: string): Promise<UserToken | undefined> {
         const userToken = await this.findOne({
             where: {
                 token,
