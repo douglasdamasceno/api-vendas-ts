@@ -26,6 +26,7 @@ export default class UpdateProfileService {
             throw new AppError('User not found');
         }
         const userUpdateEmail = await usersRepository.findByEmail(email);
+
         if (userUpdateEmail && userUpdateEmail.id !== user_id) {
             throw new AppError('There is already one user with this email');
         }

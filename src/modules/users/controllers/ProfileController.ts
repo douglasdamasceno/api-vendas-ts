@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import CreateUserService from '../services/CreateUserService';
 import ShowProfileService from '../services/ShowProfileService';
 import UpdateProfileService from '../services/UploadProfileService';
 
